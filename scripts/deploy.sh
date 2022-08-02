@@ -20,4 +20,4 @@ echo "> $JAR_NAME에 실행권한 추가"
 chmod +x $JAR_NAME
 
 echo "> $JAR_NAME 실행"
-nohup /opt/jdk-17/bin/java -jar -Dspring.profiles.active=server $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+nohup /opt/jdk-17/bin/java -javaagent:/home/ec2-user/test/datadog/dd-java-agent.jar -Ddd.profiling.enabled=true -XX:FlightRecorderOptions=stackdepth=256 -Ddd.logs.injection=true -Ddd.service=test -Ddd.env=test -jar -Dspring.profiles.active=server $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &

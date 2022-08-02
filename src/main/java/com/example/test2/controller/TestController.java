@@ -2,6 +2,7 @@ package com.example.test2.controller;
 
 import com.example.test2.dto.PersonDTO;
 import com.example.test2.service.TestService;
+import datadog.trace.api.Trace;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,7 @@ public class TestController {
     }
 
     @GetMapping("/find")
+    @Trace
     public PersonDTO find(@RequestBody String name) {
         log.info("Called find()");
         return testService.find(name);

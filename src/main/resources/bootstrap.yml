@@ -5,3 +5,4 @@ cloud:
   aws:
     region:
       static: ap-northeast-2
+      auto: false

@@ -4,6 +4,9 @@ spring:
       local: "localdb,common"
       server: "serverdb,common"
     active: local
+logging:
+  level:
+    root: info
 
 ---
 

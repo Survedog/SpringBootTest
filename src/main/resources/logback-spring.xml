@@ -2,11 +2,11 @@
 <configuration>
 
     <springProfile name="local">
-        <property name="logfile.path" value="./log.txt" />
+        <property name="logfile.path" value="./log.log" />
     </springProfile>
 
     <springProfile name="server">
-        <property name="logfile.path" value="/home/ec2-user/test/log.txt" />
+        <property name="logfile.path" value="/home/ec2-user/test/log.log" />
     </springProfile>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">

@@ -44,7 +44,7 @@ public class TestController {
     @GetMapping("/get")
     @ResponseBody
     public String getFixedData() {
-        log.info("Called get()");
+        log.info("Called getFixedData()");
         return " 고정 데이터";
     }
 

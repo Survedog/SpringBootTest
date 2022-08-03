@@ -16,20 +16,20 @@
         </encoder>
     </appender>
 
-    <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="STDOUT_JSON" class="ch.qos.logback.core.ConsoleAppender">
         <!-- By default, encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
 
     <springProfile name="local">
         <root level="INFO">
-            <appender-ref ref="JSON"/>
+            <appender-ref ref="STDOUT"/>
         </root>
     </springProfile>
 
     <springProfile name="server">
         <root level="INFO">
-            <appender-ref ref="JSON"/>
+            <appender-ref ref="STDOUT_JSON"/>
         </root>
     </springProfile>
 </configuration>

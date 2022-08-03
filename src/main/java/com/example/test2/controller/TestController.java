@@ -2,8 +2,6 @@ package com.example.test2.controller;
 
 import com.example.test2.dto.PersonDTO;
 import com.example.test2.service.TestService;
-import datadog.trace.api.CorrelationIdentifier;
-import datadog.trace.api.Trace;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,18 +32,8 @@ public class TestController {
     }
 
     @GetMapping("/find")
-    @Trace
     public PersonDTO find(@RequestBody String name) {
-        try {
-            MDC.put("dd.trace_id", CorrelationIdentifier.getTraceId());
-            MDC.put("dd.span_id", CorrelationIdentifier.getSpanId());
-            log.info("Called find()");
-        }
-        finally {
-            MDC.remove("dd.trace_id");
-            MDC.remove("dd.span_id");
-        }
-
+        log.info("Called find()");
         return testService.find(name);
     }
 

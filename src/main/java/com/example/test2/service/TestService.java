@@ -43,4 +43,13 @@ public class TestService {
 
         return dtoList;
     }
+
+    public void throwError() {
+        try {
+            throw new Exception("Threw error.");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

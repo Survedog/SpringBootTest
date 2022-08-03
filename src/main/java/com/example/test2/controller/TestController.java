@@ -1,11 +1,13 @@
 package com.example.test2.controller;
 
 import com.example.test2.dto.PersonDTO;
+import com.example.test2.service.SlackNotifyService;
 import com.example.test2.service.TestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -14,6 +16,7 @@ import java.util.List;
 public class TestController {
 
     private final TestService testService;
+    private final SlackNotifyService slackService;
 
     @PostMapping("/save")
     public String save(@RequestBody PersonDTO dto) {
@@ -45,12 +48,20 @@ public class TestController {
     @ResponseBody
     public String getFixedData() {
         log.info("Called getFixedData()");
-        return " 고정 데이터";
+        return "고정 데이터";
     }
 
-    @GetMapping("/error")
-    public void throwError() {
+    @PostMapping("/error")
+    public String throwError() {
         testService.throwError();
+        return "error thrown.";
+    }
+
+    @PostMapping("/notify")
+    public String notifyOnSlack() {
+        String channelId = slackService.getChannelId("slack-bot-test");
+        slackService.sendMessage(channelId, "메시지 전송 테스트");
+        return "notification complete.";
     }
 }
 

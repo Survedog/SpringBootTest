@@ -16,6 +16,10 @@ spring:
       on-profile: common
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
+slack:
+  token: xoxb-3841750266355-3891444523780-EeAzkU3Xv6gqnbc4EmpRN5kR
+  channel:
+    monitor: '#slack-bot-test'
 
 ---
 

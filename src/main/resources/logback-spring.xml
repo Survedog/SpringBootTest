@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <springProfile name="local">
-        <property name="logfile.path" value="./log.log" />
-    </springProfile>
-
-    <springProfile name="server">
-        <property name="logfile.path" value="/home/ec2-user/test/log.log" />
-    </springProfile>
-
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- By default, encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
         <encoder>

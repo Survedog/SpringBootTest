@@ -52,6 +52,7 @@ public class TestService {
         }
         catch (Exception e) {
             log.error("message", e);
+            e.printStackTrace();
         }
     }
 }

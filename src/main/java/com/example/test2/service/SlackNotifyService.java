@@ -6,8 +6,6 @@ import com.slack.api.model.Conversation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.*;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +19,6 @@ public class SlackNotifyService {
 
     @Value("${slack.token}")
     String token;
-
-    @Value("${slack.channel.monitor}")
-    String channel;
 
     @Value("${spring.profiles.active}")
     String springProfile;

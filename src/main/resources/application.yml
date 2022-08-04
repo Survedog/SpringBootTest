@@ -16,21 +16,20 @@ spring:
       on-profile: common
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-slack:
-  token: xoxb-3841750266355-3891444523780-EeAzkU3Xv6gqnbc4EmpRN5kR
-  channel:
-    monitor: '#slack-bot-test'
+    username: root
 
 ---
 
 spring:
   config:
+    import: classpath:/localkey.yml
     activate:
       on-profile: localdb
   datasource:
     url: jdbc:mariadb://localhost:3306/study
-    username: root
     password: 1234
+slack:
+  token: ${localkey.slack.token}
 
 ---
 
@@ -40,5 +39,6 @@ spring:
       on-profile: serverdb
   datasource:
     url: ${test.mariadb.url}
-    username: ${test.mariadb.username}
     password: ${test.mariadb.password}
+slack:
+  token: ${test.slack.token}

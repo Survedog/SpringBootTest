@@ -3,7 +3,6 @@ package com.example.test2.service;
 import com.slack.api.Slack;
 import com.slack.api.methods.SlackApiException;
 import com.slack.api.model.Conversation;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.event.*;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class SlackNotifyService {
 
@@ -25,7 +23,8 @@ public class SlackNotifyService {
 
     @EventListener(ContextRefreshedEvent.class)
     public void onContextRefreshedEvent(ContextRefreshedEvent event) {
-        if (springProfile.equals("server")) {
+        log.info("Program started");
+        if (springProfile.equals("local")) {
             String channelId = getChannelId("slack-bot-test");
             sendMessage(channelId, LocalDateTime.now() + " - 서버를 기동합니다.");
         }
@@ -33,7 +32,8 @@ public class SlackNotifyService {
 
     @EventListener(ContextClosedEvent.class)
     public void onContextClosedEvent(ContextClosedEvent event) {
-        if (springProfile.equals("server")) {
+        log.info("Program terminated");
+        if (springProfile.equals("local")) {
             String channelId = getChannelId("slack-bot-test");
             sendMessage(channelId, LocalDateTime.now() + " - 서버가 종료되었습니다.");
         }

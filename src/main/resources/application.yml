@@ -1,22 +1,13 @@
 spring:
-  profiles:
-    group:
-      local: "localdb,common"
-      server: "serverdb,common"
-    active: local
-logging:
-  level:
-    root: info
-
----
-
-spring:
   config:
     activate:
       on-profile: common
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     username: root
+logging:
+  level:
+    root: info
 
 ---
 

@@ -16,7 +16,7 @@ import java.util.List;
 public class TestController {
 
     private final TestService testService;
-    private final SlackNotifyService slackService;
+    //private final SlackNotifyService slackService;
 
     @PostMapping("/save")
     public String save(@RequestBody PersonDTO dto) {
@@ -57,12 +57,12 @@ public class TestController {
         return "error thrown.";
     }
 
-    @PostMapping("/notify")
+/*    @PostMapping("/notify")
     public String notifyOnSlack() {
         String channelId = slackService.getChannelId("slack-bot-test");
         slackService.sendMessage(channelId, "메시지 전송 테스트");
         return "notification complete.";
-    }
+    }*/
 }
 
 
